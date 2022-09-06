@@ -14,7 +14,7 @@ pipeline {
     stage('build') {
       when {
         expression {
-          BRANCH_NAME == 'main'
+          env.BRANCH_NAME == 'main'
         }
       }
       steps {
@@ -26,7 +26,7 @@ pipeline {
     stage('deploy') {
       when {
         expression {
-          BRANCH_NAME == 'master'
+          env.BRANCH_NAME == 'master'
         }
       }
       steps {
