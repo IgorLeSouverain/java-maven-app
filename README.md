@@ -1,3 +1,3 @@
 # java-maven-app
 
-Test1
+Test
