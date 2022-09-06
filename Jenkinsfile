@@ -20,6 +20,7 @@ pipeline {
       steps {
         script {
           echo 'Building the app...'
+          echo 'Bla-bla-bla'
         }
       }
     }
