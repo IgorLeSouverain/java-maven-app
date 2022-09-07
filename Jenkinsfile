@@ -49,7 +49,7 @@ pipeline {
     stage('commit version update') {
       steps {
         script {
-          withCredentials([usernamePassword(credentialsId: 'github-credentials', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
+          withCredentials([string(credentialsId: 'github-access-token', variable: 'TOKEN')]) {
             sh "git config --global user.email 'jenkins@example.com'"
             sh "git config --global user.name 'jenkins'"
 
@@ -57,7 +57,7 @@ pipeline {
             sh "git branch"
             sh "git config --list"
 
-            sh "git remote set-url origin https://${USER}:${PASS}@github.com/IgorTheOverlord/java-maven-app.git"
+            sh "git remote set-url origin https://${TOKEN}@github.com/IgorTheOverlord/java-maven-app.git"
             sh "git add ."
             sh "git commit -m 'ci: version bump'"
             sh "git push origin HEAD:jenkins-jobs"
